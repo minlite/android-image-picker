@@ -418,20 +418,7 @@ public class ImagePickerFragment extends Fragment implements ImagePickerView {
      * Request for camera permission
      */
     public void captureImageWithPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            final boolean isCameraGranted = ActivityCompat
-                    .checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
-            final boolean isWriteGranted = ActivityCompat
-                    .checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
-            if (isCameraGranted && isWriteGranted) {
-                captureImage();
-            } else {
-                logger.w("Camera permission is not granted. Requesting permission");
-                requestCameraPermissions();
-            }
-        } else {
-            captureImage();
-        }
+        captureImage();
     }
 
     /**
